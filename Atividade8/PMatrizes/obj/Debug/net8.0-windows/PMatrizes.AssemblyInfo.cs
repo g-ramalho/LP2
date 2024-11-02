@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PMatrizes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc9b71332568bb50e91412aedd073d37e7c03148")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+804d85814de00d73a8ee42a9e2ce5d9ad2dc7625")]
 [assembly: System.Reflection.AssemblyProductAttribute("PMatrizes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PMatrizes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

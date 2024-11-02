@@ -28,40 +28,72 @@ namespace PMatrizes.Forms
             E
         }
 
-        Alternativa[] gabarito = [Alternativa.A, Alternativa.B, Alternativa.E, Alternativa.D, Alternativa.C, Alternativa.E, Alternativa.D, Alternativa.A, Alternativa.B, Alternativa.C];
-
         private void btnVerificar_Click(object sender, EventArgs e)
         {
+            Alternativa[] gabarito = [Alternativa.A, Alternativa.B, Alternativa.E, Alternativa.D, Alternativa.C, Alternativa.E, Alternativa.D, Alternativa.A, Alternativa.B, Alternativa.C];
+
             Alternativa[,] alternativas = new Alternativa[8,10];
 
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    string alternativa = Interaction.InputBox($"Digite a nota {i + 1} do aluno {j + 1}", "Entrada de Dados");
+                    string alternativa = Interaction.InputBox($"Digite a alternativa da questão {j + 1} para o aluno {i + 1}", "Entrada de Dados");
 
-                    switch (alternativa[0])
+                    if (!String.IsNullOrEmpty(alternativa))
                     {
-                        case 'A':
-                            alternativas[i, j] = Alternativa.A;
-                            break;
-                        case 'B':
-                            alternativas[i, j] = Alternativa.B;
-                            break;
-                        case 'C':
-                            alternativas[i, j] = Alternativa.C;
-                            break;
-                        case 'D':
-                            alternativas[i, j] = Alternativa.D;
-                            break;
-                        case 'E':
-                            alternativas[i, j] = Alternativa.A;
-                            break;
+                        switch (alternativa[0])
+                        {
+                            case 'A':
+                            case 'a':
+                                alternativas[i, j] = Alternativa.A;
+                                break;
+                            case 'B':
+                            case 'b':
+                                alternativas[i, j] = Alternativa.B;
+                                break;
+                            case 'C':
+                            case 'c':
+                                alternativas[i, j] = Alternativa.C;
+                                break;
+                            case 'D':
+                            case 'd':
+                                alternativas[i, j] = Alternativa.D;
+                                break;
+                            case 'E':
+                            case 'e':
+                                alternativas[i, j] = Alternativa.A;
+                                break;
+                            default:
+                                j--;
+                                break;
+                        }
+                    } else
+                    {
+                        j--;
                     }
                 }
             }
 
-            
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0;j < 10; j++)
+                {
+                    string aux = "";
+
+                    if (gabarito[j] == alternativas[i,j])
+                    {
+                        aux += $"O aluno {i + 1} acertou ";
+                    } else
+                    {
+                        aux += $"O aluno {i + 1} errou ";
+                    }
+
+                    aux += $"questão {j + 1}: era {gabarito[j]} escolheu {alternativas[i, j]}";
+
+                    lstBoxSaida.Items.Add(aux);
+                }
+            }
         }
     }
 }
